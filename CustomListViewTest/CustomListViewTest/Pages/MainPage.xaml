@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CustomListViewTest.ViewModels"
+             xmlns:local="clr-namespace:CustomListViewTest"
+             x:Class="CustomListViewTest.Pages.MainPage">
+    <ContentPage.BindingContext>
+        <vm:MainVM x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="omiAdd" Clicked="omiAdd_Clicked" Text="Add" />
+        <ToolbarItem x:Name="omiToggle" Clicked="omiToggle_Clicked" Text="Toggle" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <ListView
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            ItemsSource="{Binding People}"
+            ItemTapped="lvPeople_ItemTapped"
+            HasUnevenRows="True"
+            SelectionMode="None"
+            x:Name="lvPeople">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            Orientation="Horizontal">
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Start"
+                                Orientation="Vertical"
+                                Padding="15">
+                                <Label
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Start"
+                                    Text="{Binding Item.FirstName}" />
+                                <Label
+                                    IsVisible="{Binding IsVisible}"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Start"
+                                    Text="{Binding Item.LastName}" />
+                            </StackLayout>
+                            <Image
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"
+                                Source="ic_expand_more_black"
+                                IsVisible="{Binding IsVisible, Converter={StaticResource InvertConverter}}" />
+                            <Image
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"
+                                Source="ic_expand_less_black"
+                                IsVisible="{Binding IsVisible}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
