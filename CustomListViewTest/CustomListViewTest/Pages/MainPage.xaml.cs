@@ -18,7 +18,8 @@ namespace CustomListViewTest.Pages
         private void omiAdd_Clicked(object sender, EventArgs e)
         {
             viewModel.People.Add(new Expandable<Entities.Person>(new Entities.Person { FirstName = "Pieterjan", LastName = "De Clippel" }));
-            viewModel.People.Add(new Expandable<Entities.Person>(new Entities.Person { FirstName = "Siel", LastName = "Vansteenbrugge" }));
+            viewModel.People.Add(new Expandable<Entities.Person>(new Entities.Person { FirstName = "John", LastName = "Doe" }));
+            viewModel.People.Add(new Expandable<Entities.Person>(new Entities.Person { FirstName = "Fist", LastName = "Bump" }));
         }
 
         private void omiToggle_Clicked(object sender, EventArgs e)
